@@ -17,9 +17,10 @@ Horrible song
 * Development and QA
 * Development and Operations
 
-Note: As automated testing has become more ubiquitous, the lines between development and QA have blurred
-Note: In some cases, the lines are gone
-Note: Agile, DevOps practices have driven this shift
+Note:
+   * As automated testing has become more ubiquitous, the lines between development and QA have blurred
+   * In some cases, the lines are gone
+   * Agile, DevOps practices have driven this shift
 
 --page-break--
 
@@ -27,10 +28,11 @@ Note: Agile, DevOps practices have driven this shift
 
 Developers automate
 
-Note: Developers create automated testing frameworks
-Note: Developers also create automated configuration management and deployment tools
-
 TODO need something about VM
+
+Note:
+   * Developers create automated testing frameworks
+   * Developers also create automated configuration management and deployment tools
 
 --new-slide--
 

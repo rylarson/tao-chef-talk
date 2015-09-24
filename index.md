@@ -1,14 +1,16 @@
 ## Build, development and test environments as code
 
 **Ryan Larson**
+
 Software Engineer
+
 Tripwire
 
 --new-slide--
 
 ## Chef talk
 
---new-slide--
+--page-break--
 
 ## Chef talk
 

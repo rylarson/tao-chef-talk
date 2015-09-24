@@ -1,4 +1,4 @@
-# Agent Convergence Lab Demo Slides
+# TAO Chef Talk Slide Deck
 
 These are the demo slides.  Go  [here](http://rylarson.github.io/tao-chef-talk) to see a live version of the slides.
 

@@ -2,9 +2,7 @@
 
 **Ryan Larson**
 
-Software Engineer
-
-Tripwire
+Software Engineer, Tripwire
 
 --new-slide--
 

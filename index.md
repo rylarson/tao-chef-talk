@@ -12,6 +12,9 @@ Tripwire Story
 
 Note:
    * Telling this story to tell you another story
+   * Evolution of relationship between QA and Development is similar to evolution of relationship
+   between Development and Operations
+   * Evolution of test automation is similar to evolution of environment automation
    * I think we are at the same crossroads with environment automation
 
 --page-break--
@@ -73,7 +76,7 @@ Note:
 
 --page-break--
 
-## Story Time - But wait
+## Story Time - It wasn't easy...
 
 Automation is a culture problem too
 
@@ -90,6 +93,18 @@ Note:
    * Even with embedding perf team members, didn't really work because the performance **culture** wasn't baked into the team
       * Culture is much harder to change, doesn't happen from the top down
          * Lots of push back from developers (we have to specialize!)
+
+--page-break--
+
+## Story Time - But we did it
+
+Driven by industry shifts, better tools, and better processes, we eventually got it.
+
+Note:
+   * It took time, but the culture shifted
+   * Common tool sets allowed teams to share best practices, even share code
+   * Industry as a whole highlighted the value
+   * Not specializing didn't hurt anybody!
 
 --page-break--
 

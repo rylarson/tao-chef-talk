@@ -6,103 +6,138 @@ Software Engineer, Tripwire
 
 --new-slide--
 
-## Blurred lines
-
-Horrible song
-
---page-break--
-
-## Blurred lines
-
-* Development and QA
-* Development and Operations
-
-Note:
-   * As automated testing has become more ubiquitous, the lines between development and QA have blurred
-   * In some cases, the lines are gone
-   * Agile, DevOps practices have driven this shift
-
---page-break--
-
-## Blurred lines
-
-Developers automate
-
-TODO need something about VM
-
-Note:
-   * Developers create automated testing frameworks
-   * Developers also create automated configuration management and deployment tools
-
---new-slide--
-
-## Story Time
+## Story time
 
 Tripwire Story
 
---page-break--
+Note:
+   * Telling this story to tell you another story
+   * I think we are at the same crossroads with environment automation
 
-## Story Time
+## Story time - The beginning
 
-TL;DR Dedicated QA Teams to QA Engineers embedded with Development (or the other way around if you prefer)
+Old school software development
 
-   * Move to Agile around 2008 drove the blurring of the lines between dev and QA.
-   * Developers and QA now coexist on Scrum teams
-   * Scrum teams responsible for their own QA
-   * Waterfall bad (QA gets involved too late when bugs are costly to fix)
+Separate development and QA silos
 
---page-break--
-
-## Story Time
-
-What happened?
-
-TL;DR Teams owning their own QA drove automation and got QA involved earlier in the process
-
-   * Developers started writing more test code
-   * QA started writing more test code [because they had to maintain developer code]
-   * More code = more automation
+Note:
+   * This was bad
+   * QA gets involved too late when bugs are costly to fix, especially if they are a product of the basic design
+   TODO look up more reasons this was bad
 
 --page-break--
 
-## Story Time
+## Story time - Scrum Culture
 
-Test Automation is valuable
+Developers and QA coexist on Scrum teams that are now
+responsible for their own Development and QA.
 
-   * The company as a whole sees test automation as extremely valuable
-   * Developer mindset goes from "Testing is hard/not my job" to "Testing is awesome, more codez"
-   * QA mindset goes from "Developers code" to "I code too"
-   * This is clearly a gross generalization
+Note:
+   * This is good
+   * QA gets involved early, finds bugs.
+   * Bugs are cheaper to fix because developers have context when the bugs are found
+   * Tripwire always did 'agile'. The culture shift is what took time. Scrum processes helped
+      * The culture shift is what was important and what was hard.
+   * People problem solved
 
 --page-break--
 
-## Story Time
+## Story Time - Blurred lines
 
-What happened?
+   * Move to Scrum drove the blurring of the lines between dev and QA.
+   TODO draw this same parallel between DevOps and blurring of the lines between dev and ops
+   TODO at least that this created the tools that allows us to get this value
+   * Developers naturally pick up some QA work
+      * Developers automate, leading to more automated tests
 
-TL;DR Business recognized value of automation. Creates automation and performance testing team!
+Note:
+   * Culture shift leads developers to feel ownership of QA
 
-   * Some teams were better at automation than others
-   * Business wants all teams to get value, so they form shared team to act as a support team for the feature teams
+--page-break--
+
+## Story Time - Test automation
+
+Test automation is valuable
+
+TODO The value add promise of automation is that a developer can make a change, run the tests, and if they pass, they know
+they didn't break anything
+
+TODO tie this into value add of codifying environments as code. At any time, test, development, and build environments
+ can be reproduced with confidence that the exact same bits are built.
+
+Note:
+   * The company as a whole sees the shift towards more automation as extremely valuable
+      * At the end of the day, nothing will succeed unless it has value
+
+--page-break--
+
+## Story Time - But wait
+
+Automation is a culture problem too
+
+   * Some teams were naturally better at automation than others
+   * Business takes top down approach to make automation skill set available to all teams
+      * Forms Performance & Automation team
+   * Changing culture is hard :(
+
+Note:
+   * 'Step back' feeling
+   * Developers and QA both cry "We have to specialize" as jobs move together
    * Ineffective, why? Because it is the same situation as the rest of QA was prior to the agile shift
-      * Perf bugs found late in cycle, Perf team doesn't get a hold of the code quick enough (Tie this back into why we started to do Agile)
-   * Tried Embed perf team members, didn't really work because the performance **culture** wasn't baked into the team
-   * Culture is much harder to change, doesn't happen from the top down
-      * Lots of push back from developers (we have to specialize!)
-   * Teams are now responsible for their own performance (maybe roll this into because they know how to automate tests and their environments?)
+      * Perf bugs found late in cycle, Perf team doesn't get a hold of the code quick enough
+   * Even with embedding perf team members, didn't really work because the performance **culture** wasn't baked into the team
+      * Culture is much harder to change, doesn't happen from the top down
+         * Lots of push back from developers (we have to specialize!)
 
 --page-break--
 
+TODO this is the transition point to environment automation
+
 ## Story Time
 
-Developers start becoming responsible for creating test environments
+Automating your test only gets you so far. You still need resources on which to run the tests.
 
-   * Both dedicated team and individual developers had automation for provisioning environments. Developers automate!
-   * Not invented here syndrome and poor sharable design cause nobody to share anything
+   * Variances in environments makes automated tests brittle
+   * Loss of confidence in automation devalues the automation
 
- TODO transition into Chef as a framework!
- TODO can be used by dedicated teams and feature teams HANDOFF POINT****
- TODO VM makes this possible
+TODO Environment automation is even harder than test automation
+TODO Test automation frameworks are usually a product of language or technology choice, there are standards
+TODO Not invented here syndrome and poor sharable design cause nobody to share anything
+TODO transition into Chef as a framework!
+TODO can be used by dedicated teams and feature teams HANDOFF POINT****
+TODO VM makes this possible
+TODO we tried to write our own Configuration Management frameworks. Writing good frameworks is hard, no buyoff, no WIIFM because no free stuff from community site
+
+Note:
+   * Environment Problems:
+      * Developer machines with the right environment to author tests
+      * Continuous integration slaves to run the tests
+
+--page-break--
+
+## Specialization is bad
+
+TODO tie this into blurred lines (maybe this + blurred lines is the closing of Story time)
+
+--new-slide--
+
+## Configuration Management
+
+--page-break--
+
+## Chef
+
+--page-break--
+
+## The power of virtualization
+
+TODO Virtualization is nothing new
+TODO Automating virtualization is nothing new
+TODO Scripts are not reusable
+
+--page-break-
+
+Vagrant
 
 --new-slide--
 

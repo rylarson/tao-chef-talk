@@ -156,7 +156,7 @@ Note:
 
 ## Manual test environments
 
-![Wash, Rinse, Repeat](http://addins.wrex.com/blogs/weather/wp-content/uploads/2014/09/9-23-blog1.png)
+![Wash, Rinse, Repeat](http://www.quickmeme.com/img/81/8100c2d1effc3a0dd54846705877bbe91e472c206f53b5414a4c3a50d12d45d2.jpg)
 
 Note:
    * I cannot begin to think how much time Tripwire has spent installing operating systems for testing

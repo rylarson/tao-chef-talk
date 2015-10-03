@@ -179,6 +179,8 @@ Note:
 
 Note:
    * Continuous integration machines are all snowflakes
+   * Production build environments are managed by another team and access is locked down
+         * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
    * Developers have a hard time maintaining the automated tests since automation is often dependent
       on a specific environment that could be hard to replicate.
    * When test automation costs more, it becomes less valuable
@@ -191,8 +193,9 @@ Note:
 ## Build environments
 
 Note:
+   * Production build machines are all snowflakes
    * Production build environments are managed by another team and access is locked down
-      * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
+         * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
    * The state of the build environments change over time.
       * This can lead to different results on different build agents that can be hard to troubleshoot
       * Also makes it impossible to reproduce an old build
@@ -246,9 +249,52 @@ We can use DevOps tools to version our Development, Test, and Build environments
 
 --page-break--
 
-## Wait a minute
+## Development environments
 
+A working development environment can be checked in with the source code!
 
+Note:
+  * What about it going stale?
+     * It has tests too that run with the build!
+  * No longer afraid to work on installers!
+     * Check out the code, create the development environment for the installer, profit.
+  * New developers are productive on day 1!
+     * Obviously they will probably customize these environments, but they don't have to
+
+--page-break--
+
+## Manual test environments
+
+![WOMB](http://cdn.meme.am/instances/62232400.jpg)
+
+Note:
+   * Operating system problem
+      * Every supported operating system that can be virtualized has a packer template to build it and a vagrant box
+         to consume
+      * Any operating system can be stood up in minutes
+      * Everybody has the same test environment!
+         * No more "works on my box"
+   * Chef code can be checked in with the source to install your app on any of the supported operating systems
+      * Development or QA can just type a command to get their app on whatever operating system they need to test on
+   * Again, this is all versioned along side the code it is designed to test
+   * What about it going stale?
+      * The person doing the manual tests will make noise if it breaks!
+
+--page-break--
+
+## Continuous integration test environments
+
+Note:
+   * Continuous integration test environments are defined as code
+   * Any external dependencies of the tests are defined as code
+      * Maybe even stood up by the test!
+   * Again, this is all versioned along side the code it is designed to test
+   * What about it going stale?
+      * If the CI build fails because of an environmental problem, that is just treated as a test failure that will
+         get fixed just like any other test failure
+   * This is all super great because any developer can check out the code, and build themselves the same environment
+      that the production continuous integration server is running in.
+      * Easier test development
 
 --new-slide--
 

@@ -8,7 +8,7 @@ Software Engineer, Tripwire
 
 ## Story time
 
-Tripwire Story
+Tripwire Story of test automation
 
 Note:
    * Telling this story to tell you another story
@@ -32,7 +32,7 @@ Note:
 
 --page-break--
 
-## Story time - Scrum Culture
+## Story time - Scrum culture
 
 Developers and QA coexist on Scrum teams that are now
 responsible for their own Development and QA.
@@ -106,36 +106,82 @@ Note:
    * Industry as a whole highlighted the value
       * Test automation as a practice matured across the industry
    * Not specializing didn't hurt anybody!
+   * Job roles overlapping helped interpersonal relationships since the team
+   gets to work on more together.
 
 --page-break--
 
-TODO this is the transition point to environment automation
+## Story time - The end
 
-## Story Time
+Note:
+   * I told you that story so I can tell you another story
+   * The next story that I am about to tell you is still evolving, but it starts in much the same way
+     as the last one did
+   * There was a lot of time and energy spent changing practices and changing minds... MORE HERE
 
-Automating your test only gets you so far. You still need resources on which to run the tests.
+--new-slide--
 
-   * Variances in environments makes automated tests brittle
-   * Loss of confidence in automation devalues the automation
+## Environments
 
-TODO Environment automation is even harder than test automation
+![Snowflake](http://www.sharonsalzberg.com/wp-content/uploads/2015/02/snowflake.jpg)
+
+Note:
+   * Our environments were all snowflakes
+   * We spent a lot of time ($$$) troubleshooting problems between peoples different environments
+   * New developers take a long time to come on board because they have to find somebody who remembers how to configure tools
+   * We had documentation but it quickly became stale
+
+--page-break
+
+## Development environments
+
+Note:
+   * Developers take a long time to come online because every development
+
+
+## Test environments
+
+Note:
+   * Continuous integration machines are all snowflakes
+   * Developers have a hard time maintaining the automated tests since automation is often dependent
+      on a specific environment that could be hard to replicate.
+   * Changing anything about the environment is expensive because there is no way to know if you break anything
+
+## Build environments
+
+
+## Mitigation
+
+That sounds horrible
+
+Note:
+   * There are lots of mitigations to these problems that tripwire has tried
+      * VM templates
+         * Too much disk, template sprawl
+         * Difficult to accurately describe everything about the state
+         * Not composable
+      * Writing our own configuration management
+         * This is fricking hard
+         * Very difficult to get people to share it
+         * Poor sharable design
+            * Often automation is designed to address a specific problem
+            * Again, not composable
+         * NIH syndrom
+
+
+
+TODO   * Variances in environments makes automated tests brittle
+TODO   * Loss of confidence in automation devalues the automation
+
 TODO Test automation frameworks are usually a product of language or technology choice, there are standards
-TODO Not invented here syndrome and poor sharable design cause nobody to share anything
 TODO transition into Chef as a framework!
 TODO can be used by dedicated teams and feature teams HANDOFF POINT****
-TODO VM makes this possible
-TODO we tried to write our own Configuration Management frameworks. Writing good frameworks is hard, no buyoff, no WIIFM because no free stuff from community site
+
 
 Note:
    * Environment Problems:
       * Developer machines with the right environment to author tests
       * Continuous integration slaves to run the tests
-
---page-break--
-
-## Specialization is bad
-
-TODO tie this into blurred lines (maybe this + blurred lines is the closing of Story time)
 
 --new-slide--
 
@@ -156,6 +202,12 @@ TODO Scripts are not reusable
 --page-break-
 
 Vagrant
+
+--new-slide--
+
+## Specialization is bad
+
+This should probably be at the end of the talk
 
 --new-slide--
 

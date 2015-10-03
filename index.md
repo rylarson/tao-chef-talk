@@ -213,7 +213,7 @@ Note:
 
 --page-break--
 
-## Mitigation
+## Failed solutions
 
 That sounds horrible
 
@@ -239,6 +239,12 @@ TODO   * Loss of confidence in automation devalues the automation
 TODO Test automation frameworks are usually a product of language or technology choice, there are standards
 TODO transition into Chef as a framework!
 TODO can be used by dedicated teams and feature teams HANDOFF POINT****
+
+--new-slide--
+
+## A new hope
+
+!(A new hope)[http://www.dvdactive.com/images/editorial/screenshot/2011/9/crawlbd.jpg]
 
 --new-slide--
 

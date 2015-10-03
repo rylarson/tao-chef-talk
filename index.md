@@ -141,7 +141,7 @@ Note:
       * Lots of common stuff though
          * Required libraries
          * Required software (java, build system, ruby, rvm, whatever)
-         * Lots of common gotchas that take thrashing with other developers to figure out
+         * Common gotchas that take thrashing with other developers to figure out
    * There is great value in having a reference development environment that works
    * Setting up a development environment for working on weird stuff can be really costly
       * Working on installers
@@ -173,6 +173,8 @@ Note:
    * Continuous integration machines are all snowflakes
    * Developers have a hard time maintaining the automated tests since automation is often dependent
       on a specific environment that could be hard to replicate.
+   * When test automation costs more, it becomes less valuable
+      * We worked so hard to get here!
    * Changing anything about the environment is expensive because there is no way to know if you break anything
    * So many automated tests depend on other resources that are manually created and maintained.
 
@@ -183,6 +185,9 @@ Note:
 Note:
    * Production build environments are managed by another team and access is locked down
       * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
+   * The state of the build environments change over time.
+      * This can lead to different results on different build agents that can be hard to troubleshoot
+      * Also makes it impossible to reproduce an old build
 
 --page-break--
 
@@ -192,18 +197,19 @@ That sounds horrible
 
 Note:
    * There are lots of mitigations to these problems that tripwire has tried
-      * VM templates
-         * Too much disk, template sprawl
-         * Difficult to accurately describe everything about the state
-         * Not composable
-      * Writing our own configuration management
-         * This is fricking hard
-         * Very difficult to get people to share it
-         * Poor sharable design
-            * Often automation is designed to address a specific problem
-            * Again, not composable
-         * NIH syndrome
+   * VM templates
+      * Too much disk, template sprawl
+      * Difficult to accurately describe everything about the state
+      * Not composable
+   * Writing our own configuration management
+      * This is fricking hard
+      * Very difficult to get people to share it
+      * Poor sharable design
+         * Often automation is designed to address a specific problem
+         * Again, not composable
+      * NIH syndrome
 
+--page-break--
 
 
 TODO   * Variances in environments makes automated tests brittle
@@ -212,12 +218,6 @@ TODO   * Loss of confidence in automation devalues the automation
 TODO Test automation frameworks are usually a product of language or technology choice, there are standards
 TODO transition into Chef as a framework!
 TODO can be used by dedicated teams and feature teams HANDOFF POINT****
-
-
-Note:
-   * Environment Problems:
-      * Developer machines with the right environment to author tests
-      * Continuous integration slaves to run the tests
 
 --page-break--
 

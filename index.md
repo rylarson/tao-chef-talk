@@ -123,7 +123,7 @@ Note:
 
 ## Environments
 
-Snowflakes
+![Snowflakes](http://www.fortvilleaction.com/uploads/3/7/1/0/37104089/6760459_orig.gif)
 
 Note:
    * Our environments were all snowflakes

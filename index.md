@@ -240,7 +240,7 @@ TODO can be used by dedicated teams and feature teams HANDOFF POINT****
 
 ## A new hope
 
-![A new hope](http://www.dvdactive.com/images/editorial/screenshot/2011/9/crawlbd.jpg)
+![A new hope](images/crawlbd.jpg)
 
 We can use DevOps tools to version our Development, Test, and Build environments by defining them as code!
 

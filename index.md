@@ -44,19 +44,18 @@ Note:
    * Tripwire always did 'agile'. The culture shift is what took time. Scrum processes helped
       * The culture shift is what was important and what was hard.
    * People problem solved
+   * Teams feel shared ownership of both development and QA
 
 --page-break--
 
-## Story Time - Blurred lines
+## Story Time - Test automation
 
-   * Move to Scrum drove the blurring of the lines between dev and QA.
-   TODO draw this same parallel between DevOps and blurring of the lines between dev and ops
-   TODO at least that this created the tools that allows us to get this value
-   * Developers naturally pick up some QA work
-      * Developers automate, leading to more automated tests
+Scrum blurred the lines between development and QA. At the same time, the industry as a whole was making a shift towards
+automating lots of tests.
 
 Note:
-   * Culture shift leads developers to feel ownership of QA
+   * Automation further blurred the lines between dev and QA.
+      * Developers were picking up QA 'development' tasks and QA was developing software to test software.
 
 --page-break--
 
@@ -64,15 +63,18 @@ Note:
 
 Test automation is valuable
 
-TODO The value add promise of automation is that a developer can make a change, run the tests, and if they pass, they know
-they didn't break anything
-
 TODO tie this into value add of codifying environments as code. At any time, test, development, and build environments
  can be reproduced with confidence that the exact same bits are built.
 
 Note:
    * The company as a whole sees the shift towards more automation as extremely valuable
       * At the end of the day, nothing will succeed unless it has value
+   * The value add promise of automation is that a developer can make a change, run the tests, and if they pass, they know
+     they didn't break anything
+   * This change empowered developers to find many of the bugs before things got to QA.
+   * Allowed developers to have greater confidence in their code and be more autonomous
+
+   TODO empowering developers with automated tests is the same as empowering them with automated environments
 
 --page-break--
 
@@ -80,19 +82,17 @@ Note:
 
 Automation is a culture problem too
 
+Note:
    * Some teams were naturally better at automation than others
    * Business takes top down approach to make automation skill set available to all teams
-      * Forms Performance & Automation team
-   * Changing culture is hard :(
-
-Note:
-   * 'Step back' feeling
-   * Developers and QA both cry "We have to specialize" as jobs move together
+        * Forms Performance & Automation team
    * Ineffective, why? Because it is the same situation as the rest of QA was prior to the agile shift
-      * Perf bugs found late in cycle, Perf team doesn't get a hold of the code quick enough
-   * Even with embedding perf team members, didn't really work because the performance **culture** wasn't baked into the team
-      * Culture is much harder to change, doesn't happen from the top down
-         * Lots of push back from developers (we have to specialize!)
+        * Perf bugs found late in cycle, Perf team doesn't get a hold of the code quick enough
+   * Changing culture is hard :(
+      * Even with embedding perf team members, didn't really work because the automation **culture** wasn't baked into the team
+         * Culture is much harder to change, doesn't happen from the top down
+            * Lots of push back from developers (we have to specialize!)
+   * Developers and QA both cry "We have to specialize" as the job roles start to have more overlap.
 
 --page-break--
 
@@ -104,6 +104,7 @@ Note:
    * It took time, but the culture shifted
    * Common tool sets allowed teams to share best practices, even share code
    * Industry as a whole highlighted the value
+      * Test automation as a practice matured across the industry
    * Not specializing didn't hurt anybody!
 
 --page-break--

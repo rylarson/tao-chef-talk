@@ -233,10 +233,6 @@ Note:
 
 --page-break--
 
-TODO   * Variances in environments makes automated tests brittle
-TODO   * Loss of confidence in automation devalues the automation
-
-TODO Test automation frameworks are usually a product of language or technology choice, there are standards
 TODO transition into Chef as a framework!
 TODO can be used by dedicated teams and feature teams HANDOFF POINT****
 
@@ -244,7 +240,15 @@ TODO can be used by dedicated teams and feature teams HANDOFF POINT****
 
 ## A new hope
 
-!(A new hope)[http://www.dvdactive.com/images/editorial/screenshot/2011/9/crawlbd.jpg]
+![A new hope](http://www.dvdactive.com/images/editorial/screenshot/2011/9/crawlbd.jpg)
+
+We can use DevOps tools to version our Development, Test, and Build environments by defining them as code!
+
+--page-break--
+
+## Wait a minute
+
+
 
 --new-slide--
 

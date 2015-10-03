@@ -211,16 +211,6 @@ Note:
 
 --page-break--
 
-
-TODO   * Variances in environments makes automated tests brittle
-TODO   * Loss of confidence in automation devalues the automation
-
-TODO Test automation frameworks are usually a product of language or technology choice, there are standards
-TODO transition into Chef as a framework!
-TODO can be used by dedicated teams and feature teams HANDOFF POINT****
-
---page-break--
-
 ## Reproducibility
 
 Note:
@@ -232,6 +222,15 @@ Note:
          * Will they still pass?
       * Will the build agent still build it correctly?
       * Can the developer even check out that revision and build it without making changes to his/her environment?
+
+--page-break--
+
+TODO   * Variances in environments makes automated tests brittle
+TODO   * Loss of confidence in automation devalues the automation
+
+TODO Test automation frameworks are usually a product of language or technology choice, there are standards
+TODO transition into Chef as a framework!
+TODO can be used by dedicated teams and feature teams HANDOFF POINT****
 
 --new-slide--
 

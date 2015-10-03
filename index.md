@@ -123,11 +123,19 @@ Note:
 
 ## Environments
 
+Note:
+   * Explain some common problems that many organizations encounter with regards to development, test, and build environments.
+   * Then, about some creative ways we use and plan to use DevOps tools to solve these problems.
+
+--page-break--
+
+## Environments - problems
+
 ![Snowflakes](http://www.fortvilleaction.com/uploads/3/7/1/0/37104089/6760459_orig.gif)
 
 Note:
-   * Our environments were all snowflakes
-   * We spent a lot of time ($$$) troubleshooting problems between peoples different environments
+   * Our environments are all snowflakes
+   * We spend a lot of time ($$$) troubleshooting problems between peoples different environments
    * New developers take a long time to come on board because they have to find somebody who remembers how to configure tools
    * We had documentation but it quickly became stale
 
@@ -191,6 +199,20 @@ Note:
 
 --page-break--
 
+## Reproducibility
+
+Note:
+   * Builds are not truly reproducible because the environments used to develop, test, and build them
+      change over time.
+   * Scenario: Customer escalation for a product from 2 releases ago needs a hotfix. How do we have confidence
+      that nothing else changed besides our fix?
+      * Can we still stand up the automated tests for that release?
+         * Will they still pass?
+      * Will the build agent still build it correctly?
+      * Can the developer even check out that revision and build it without making changes to his/her environment?
+
+--page-break--
+
 ## Mitigation
 
 That sounds horrible
@@ -208,20 +230,6 @@ Note:
          * Often automation is designed to address a specific problem
          * Again, not composable
       * NIH syndrome
-
---page-break--
-
-## Reproducibility
-
-Note:
-   * Builds are not truly reproducible because the environments used to develop, test, and build them
-      change over time.
-   * Scenario: Customer escalation for a product from 2 releases ago needs a hotfix. How do we have confidence
-      that nothing else changed besides our fix?
-      * Can we still stand up the automated tests for that release?
-         * Will they still pass?
-      * Will the build agent still build it correctly?
-      * Can the developer even check out that revision and build it without making changes to his/her environment?
 
 --page-break--
 

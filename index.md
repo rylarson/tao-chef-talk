@@ -123,7 +123,7 @@ Note:
 
 ## Environments
 
-![Snowflake](http://www.sharonsalzberg.com/wp-content/uploads/2015/02/snowflake.jpg)
+Snowflakes
 
 Note:
    * Our environments were all snowflakes

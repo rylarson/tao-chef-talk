@@ -131,24 +131,60 @@ Note:
    * New developers take a long time to come on board because they have to find somebody who remembers how to configure tools
    * We had documentation but it quickly became stale
 
---page-break
+--page-break--
 
 ## Development environments
 
 Note:
-   * Developers take a long time to come online because every development
+   * Developers take a long time to come onboard because they spend a lot of time setting up their environment
+      * Every development environment is a snowflake, which is fine
+      * Lots of common stuff though
+         * Required libraries
+         * Required software (java, build system, ruby, rvm, whatever)
+         * Lots of common gotchas that take thrashing with other developers to figure out
+   * There is great value in having a reference development environment that works
+   * Setting up a development environment for working on weird stuff can be really costly
+      * Working on installers
+        * InstallShield
+        * Bitrock InstallBuilder
+        * rpmbuild
+        * WiX
+        * Nobody wants to touch the installers because it is costly! So we work around it.
+   * Setting up a development environment for working on something you aren't used to can be costly
 
+--page-break--
 
-## Test environments
+## Manual test environments
+
+![Wash, Rinse, Repeat](http://addins.wrex.com/blogs/weather/wp-content/uploads/2014/09/9-23-blog1.png)
+
+Note:
+   * I cannot begin to think how much time Tripwire has spent installing operating systems for testing
+   * We are paying really smart engineers lots of money to install software, that is insane!
+   * Duplicated (or triplicated) work
+      * Developers create environments to test their changes
+      * QA creates more environments to test changes
+
+--page-break--
+
+## Continuous integration test environments
 
 Note:
    * Continuous integration machines are all snowflakes
    * Developers have a hard time maintaining the automated tests since automation is often dependent
       on a specific environment that could be hard to replicate.
    * Changing anything about the environment is expensive because there is no way to know if you break anything
+   * So many automated tests depend on other resources that are manually created and maintained.
+
+--page-break--
 
 ## Build environments
 
+Note:
+   * Production build environments are managed by another team and access is locked down
+      * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
+
+--page-break--
 
 ## Mitigation
 
@@ -166,7 +202,7 @@ Note:
          * Poor sharable design
             * Often automation is designed to address a specific problem
             * Again, not composable
-         * NIH syndrom
+         * NIH syndrome
 
 
 
@@ -182,6 +218,20 @@ Note:
    * Environment Problems:
       * Developer machines with the right environment to author tests
       * Continuous integration slaves to run the tests
+
+--page-break--
+
+## Reproducibility
+
+Note:
+   * Builds are not truly reproducible because the environments used to develop, test, and build them
+      change over time.
+   * Scenario: Customer escalation for a product from 2 releases ago needs a hotfix. How do we have confidence
+      that nothing else changed besides our fix?
+      * Can we still stand up the automated tests for that release?
+         * Will they still pass?
+      * Will the build agent still build it correctly?
+      * Can the developer even check out that revision and build it without making changes to his/her environment?
 
 --new-slide--
 

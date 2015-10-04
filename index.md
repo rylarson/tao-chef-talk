@@ -121,80 +121,6 @@ Note:
 
 --new-slide--
 
-## Automate Development, test, and build environments with DevOps tools
-
-Note:
-   * Describe what is necessary to version an automated environment
-   * Not going to prescribe specific tools, but I will tell you what we use
-
---page-break--
-
-## Configuration management - Chef
-
-Chef is all about taking a system and applying some configuration to it.
-
-Note:
-   * The normal use case is to take a newly installed operating system and put it into the appropriate state
-   for development and test.
-   * Written in ruby
-   * Package management built in (cookbooks)
-      * Think Java Jar, Ruby Gem, Python Egg
-   * Dependency management built in
-   * Very similar to Rubygems/Bundler
-   * Chef doesn't know or care that it is running on a VM
-
---page-break--
-
-## VM Deployment - Vagrant
-
-Vagrant can deploy a VM to almost any VM provider, and optionally kick off a configuration management tool
-once the VM is up.
-
-Note:
-   * VMs compatible with Vagrant packaged as box files
-   * Be careful, box files can be very snowflakey too!
-
---page-break--
-
-## Vagrant box creation - Packer
-
-Packer is a tool that can take a bare ISO and make it suitable for use with Vagrant
-
-Note:
-   * It can do a lot more, but for the purposes of this talk, this is all that matters
-   * Packer templates are just JSON files that describe what packer should do with the ISO
-      * They are platform dependent (i.e. Kickstarter and Preseed files)
-
---page-break--
-
-## All together now
-
-   * Packer takes an ISO as input and outputs a Vagrant compatible box
-   * Vagrant takes the box as well as Chef cookbooks as input, and creates a VM from the box that has the configuration
-   specified by the Chef cookbooks
-
-Note:
-   * In practice
-      * Packer builds are done in Continuous Integration and the Vagrant Boxes are treated as artifacts just like any
-      other software
-      * Builds for Chef cookbooks are also done in continuous integration and the cookbooks are treated as artifacts
-      just like any other software
-      * Vagrantfiles are checked in to source control and consume/put together the output from the Chef and Packer builds
-
---page-break--
-
-## The power of virtualization
-
-TODO Virtualization is nothing new
-TODO Automating virtualization is nothing new
-TODO Scripts are not reusable
-
---page-break-
-
-Vagrant
-
---new-slide--
-
 ## Environments
 
 Note:
@@ -317,11 +243,88 @@ TODO can be used by dedicated teams and feature teams HANDOFF POINT****
 
 --new-slide--
 
+## Automate Development, test, and build environments with DevOps tools
+
+Note:
+   * Describe what is necessary to version an automated environment
+   * Not going to prescribe specific tools, but I will tell you what we use
+
+--page-break--
+
+## Configuration management - Chef
+
+Chef is all about taking a system and applying some configuration to it.
+
+Note:
+   * The normal use case is to take a newly installed operating system and put it into the appropriate state
+   for development and test.
+   * Written in ruby
+   * Package management built in (cookbooks)
+      * Think Java Jar, Ruby Gem, Python Egg
+   * Dependency management built in
+   * Very similar to Rubygems/Bundler
+   * Chef doesn't know or care that it is running on a VM
+
+--page-break--
+
+## VM Deployment - Vagrant
+
+Vagrant can deploy a VM to almost any VM provider, and optionally kick off a configuration management tool
+once the VM is up.
+
+Note:
+   * VMs compatible with Vagrant packaged as box files
+   * Be careful, box files can be very snowflakey too!
+
+--page-break--
+
+## Vagrant box creation - Packer
+
+Packer is a tool that can take a bare ISO and make it suitable for use with Vagrant
+
+Note:
+   * It can do a lot more, but for the purposes of this talk, this is all that matters
+   * Packer templates are just JSON files that describe what packer should do with the ISO
+      * They are platform dependent (i.e. Kickstarter and Preseed files)
+
+--page-break--
+
+## All together now
+
+   * Packer takes an ISO as input and outputs a Vagrant compatible box
+   * Vagrant takes the box as well as Chef cookbooks as input, and creates a VM from the box that has the configuration
+   specified by the Chef cookbooks
+
+Note:
+   * In practice
+      * Packer builds are done in Continuous Integration and the Vagrant Boxes are treated as artifacts just like any
+      other software
+      * Builds for Chef cookbooks are also done in continuous integration and the cookbooks are treated as artifacts
+      just like any other software
+      * Vagrantfiles are checked in to source control and consume/put together the output from the Chef and Packer builds
+
+--page-break--
+
+## The power of virtualization
+
+TODO Virtualization is nothing new
+TODO Automating virtualization is nothing new
+TODO Scripts are not reusable
+
+--page-break-
+
+Vagrant
+
+--new-slide--
+
 ## A new hope
 
 ![A new hope](images/crawlbd.jpg)
 
 We can use DevOps tools to version our Development, Test, and Build environments by defining them as code!
+
+Note:
+   * Here is what our environments look like when they are defined as code
 
 --page-break--
 

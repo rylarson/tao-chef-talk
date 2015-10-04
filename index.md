@@ -121,6 +121,60 @@ Note:
 
 --new-slide--
 
+## Automate Development, test, and build environments with DevOps tools
+
+Note:
+   * Describe what is necessary to version an automated environment
+   * Not going to prescribe specific tools, but I will tell you what we use
+
+--page-break--
+
+## Configuration management - Chef
+
+Chef is all about taking a system and applying some configuration to it.
+
+Note:
+   * The normal use case is to take a newly installed operating system and put it into the appropriate state
+   for development and test.
+   * Written in ruby
+   * Package management built in (cookbooks)
+      * Think Java Jar, Ruby Gem, Python Egg
+   * Dependency management built in
+   * Very similar to Rubygems/Bundler
+   * Chef doesn't know or care that it is running on a VM
+
+--page-break--
+
+## VM Deployment - Vagrant
+
+Vagrant can deploy a VM to almost any VM provider, and optionally kick off a configuration management tool
+once the VM is up.
+
+Note:
+   * VMs compatible with Vagrant packaged as box files
+   * Be careful, box files can be very snowflakey too!
+
+## It all starts with an ISO
+
+Start with a pristine ISO
+
+Note:
+   * A bare operating system ISO
+
+--page-break--
+
+## The power of virtualization
+
+TODO Virtualization is nothing new
+TODO Automating virtualization is nothing new
+TODO Scripts are not reusable
+
+--page-break-
+
+Vagrant
+
+--new-slide--
+
 ## Environments
 
 Note:
@@ -204,6 +258,8 @@ Note:
 
 ## Reproducibility
 
+![Reproducibility](http://blog.f1000research.com/wordpress/wp-content/uploads/2014/04/reproducibility-small.jpg)
+
 Note:
    * Builds are not truly reproducible because the environments used to develop, test, and build them
       change over time.
@@ -282,10 +338,10 @@ Note:
 
 --page-break--
 
-## Continuous integration test environments
+## Build and Continuous integration test environments
 
 Note:
-   * Continuous integration test environments are defined as code
+   * Build and Continuous integration test environments are defined as code
    * Any external dependencies of the tests are defined as code
       * Maybe even stood up by the test!
    * Again, this is all versioned along side the code it is designed to test
@@ -296,25 +352,23 @@ Note:
       that the production continuous integration server is running in.
       * Easier test development
 
---new-slide--
-
-## Configuration Management
-
 --page-break--
 
-## Chef
+## Reproducibility
 
---page-break--
+![Reproducibility](http://blog.f1000research.com/wordpress/wp-content/uploads/2014/04/reproducibility-small.jpg)
 
-## The power of virtualization
-
-TODO Virtualization is nothing new
-TODO Automating virtualization is nothing new
-TODO Scripts are not reusable
-
---page-break-
-
-Vagrant
+Note:
+   * Using DevOps tools gives us the ultimate in reproducibility
+   * Spin up the development environment
+   * Make the change
+      * Local build/tests
+   * Spin up manual test environments on whatever operating systems
+      * Perform the tests
+   * Spin up the Continuous integration test environment along with any dependencies of the tests
+      * Run the tests
+   * Spin up the Production build environment
+      * Do the build
 
 --new-slide--
 

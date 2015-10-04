@@ -154,12 +154,32 @@ Note:
    * VMs compatible with Vagrant packaged as box files
    * Be careful, box files can be very snowflakey too!
 
-## It all starts with an ISO
+--page-break--
 
-Start with a pristine ISO
+## Vagrant box creation - Packer
+
+Packer is a tool that can take a bare ISO and make it suitable for use with Vagrant
 
 Note:
-   * A bare operating system ISO
+   * It can do a lot more, but for the purposes of this talk, this is all that matters
+   * Packer templates are just JSON files that describe what packer should do with the ISO
+      * They are platform dependent (i.e. Kickstarter and Preseed files)
+
+--page-break--
+
+## All together now
+
+   * Packer takes an ISO as input and outputs a Vagrant compatible box
+   * Vagrant takes the box as well as Chef cookbooks as input, and creates a VM from the box that has the configuration
+   specified by the Chef cookbooks
+
+Note:
+   * In practice
+      * Packer builds are done in Continuous Integration and the Vagrant Boxes are treated as artifacts just like any
+      other software
+      * Builds for Chef cookbooks are also done in continuous integration and the cookbooks are treated as artifacts
+      just like any other software
+      * Vagrantfiles are checked in to source control and consume/put together the output from the Chef and Packer builds
 
 --page-break--
 

@@ -236,11 +236,6 @@ Note:
          * Again, not composable
       * NIH syndrome
 
---page-break--
-
-TODO transition into Chef as a framework!
-TODO can be used by dedicated teams and feature teams HANDOFF POINT****
-
 --new-slide--
 
 ## Automate Development, test, and build environments with DevOps tools

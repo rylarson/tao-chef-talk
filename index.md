@@ -287,6 +287,16 @@ Note:
    * Packer templates are just JSON files that describe what packer should do with the ISO
       * They are platform dependent (i.e. Kickstarter and Preseed files)
 
+## What about the failed solutions?
+
+Note:
+   * More than anything, Chef provides a framework for environment automation.
+   * Before we had problems because of the mix of language choice, other technologies, and design.
+   * When everybody is using the same framework, it makes things much easier to share
+   * Chef solves a lot of common problems for us too, like package and dependency management.
+   * There is great incentive for people not to roll their own since Chef gives us so many things for free
+      from the community site.
+
 --page-break--
 
 ## All together now
@@ -347,12 +357,15 @@ Note:
 ![WOMB](http://cdn.meme.am/instances/62232400.jpg)
 
 Note:
-   * Operating system problem
+   * **Why?**
+   * Way less duplicated effort
       * Every supported operating system that can be virtualized has a packer template to build it and a vagrant box
          to consume
       * Any operating system can be stood up in minutes
+   * No more spending hours troubleshooting problems due to variances in environments
       * Everybody has the same test environment!
          * No more "works on my box"
+   * **How?**
    * Chef code can be checked in with the source to install your app on any of the supported operating systems
       * Development or QA can just type a command to get their app on whatever operating system they need to test on
    * Again, this is all versioned along side the code it is designed to test
@@ -383,6 +396,7 @@ Note:
 
 Note:
    * Using DevOps tools gives us the ultimate in reproducibility
+   * **patch/hotfix process**
    * Spin up the development environment
    * Make the change
       * Local build/tests
@@ -406,7 +420,3 @@ Ryan Larson
 https://github.com/rylarson
 
 @ryrylarson
-
-TODO CALLOUTS
-   * Chef provides common framework encourages sharing, we had pile of everybody's shit before
-

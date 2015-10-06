@@ -282,6 +282,8 @@ Note:
    * Packer templates are just JSON files that describe what packer should do with the ISO
       * They are platform dependent (i.e. Kickstarter and Preseed files)
 
+--page-break--
+
 ## What about the failed solutions?
 
 Note:
@@ -307,18 +309,6 @@ Note:
       * Builds for Chef cookbooks are also done in continuous integration and the cookbooks are treated as artifacts
       just like any other software
       * Vagrantfiles are checked in to source control and consume/put together the output from the Chef and Packer builds
-
---page-break--
-
-## The power of virtualization
-
-TODO Virtualization is nothing new
-TODO Automating virtualization is nothing new
-TODO Scripts are not reusable
-
---page-break-
-
-Vagrant
 
 --new-slide--
 

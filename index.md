@@ -123,9 +123,9 @@ Note:
 
 ## Environments
 
-Note:
-   * Explain some common problems that many organizations encounter with regards to development, test, and build environments.
-   * Then, about some creative ways we use and plan to use DevOps tools to solve these problems.
+   * Environmental problems
+   * Failed solutions
+   * Solutions with DevOps tools
 
 --page-break--
 
@@ -135,9 +135,6 @@ Note:
 
 Note:
    * Our environments are all snowflakes
-   * We spend a lot of time ($$$) troubleshooting problems between peoples different environments
-   * New developers take a long time to come on board because they have to find somebody who remembers how to configure tools
-   * We had documentation but it quickly became stale
 
 --page-break--
 
@@ -152,12 +149,7 @@ Note:
          * Common gotchas that take thrashing with other developers to figure out
    * There is great value in having a reference development environment that works
    * Setting up a development environment for working on weird stuff can be really costly
-      * Working on installers
-        * InstallShield
-        * Bitrock InstallBuilder
-        * rpmbuild
-        * WiX
-        * Nobody wants to touch the installers because it is costly! So we work around it.
+      * Nobody wants to touch the installers because it is costly! So we work around it.
    * Setting up a development environment for working on something you aren't used to can be costly
 
 --page-break--
@@ -165,6 +157,9 @@ Note:
 ## Manual test environments
 
 ![Wash, Rinse, Repeat](http://www.quickmeme.com/img/81/8100c2d1effc3a0dd54846705877bbe91e472c206f53b5414a4c3a50d12d45d2.jpg)
+
+   * Duplicated work
+   * Environmental variance makes troubleshooting difficult
 
 Note:
    * I cannot begin to think how much time Tripwire has spent installing operating systems for testing
@@ -177,53 +172,53 @@ Note:
 
 ## Continuous integration test environments
 
+![WOMB](http://cdn.meme.am/instances/62232400.jpg)
+
+   * Continuous integration environments are managed by a different team
+   * Environmental problems make test automation less valuable
+   * Automated tests often depend on external resources that are manually created and maintained
+
 Note:
-   * Continuous integration machines are all snowflakes
-   * Production build environments are managed by another team and access is locked down
-         * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
-   * Developers have a hard time maintaining the automated tests since automation is often dependent
-      on a specific environment that could be hard to replicate.
-   * When test automation costs more, it becomes less valuable
-      * We worked so hard to get here!
-   * Changing anything about the environment is expensive because there is no way to know if you break anything
-   * So many automated tests depend on other resources that are manually created and maintained.
+
+   * Problems:
+      * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
+      * Developers have a hard time maintaining the automated tests since automation is often dependent
+         on external resources that are expensive or impossible to replicate
+      * Often test changes can only really be tested in production
 
 --page-break--
 
-## Build environments
-
-Note:
-   * Production build machines are all snowflakes
-   * Production build environments are managed by another team and access is locked down
-         * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
-   * The state of the build environments change over time.
-      * This can lead to different results on different build agents that can be hard to troubleshoot
-      * Also makes it impossible to reproduce an old build
-
---page-break--
-
-## Reproducibility
+## Build environments - Reproducibility
 
 ![Reproducibility](http://blog.f1000research.com/wordpress/wp-content/uploads/2014/04/reproducibility-small.jpg)
 
 Note:
+   * Problems:
+      * Many of the same problems as the Continuous Integration environments
+      * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
+   * The state of the build environments change over time.
    * Builds are not truly reproducible because the environments used to develop, test, and build them
       change over time.
    * Scenario: Customer escalation for a product from 2 releases ago needs a hotfix. How do we have confidence
       that nothing else changed besides our fix?
+      * When the developer checks out the code, will it still build?
       * Can we still stand up the automated tests for that release?
          * Will they still pass?
       * Will the build agent still build it correctly?
-      * Can the developer even check out that revision and build it without making changes to his/her environment?
 
 --page-break--
 
+## Reproducibility - Build agent horror story
+
+   * Patch was pulled from release because an environmental change caused the AIX agent to recompile
+
 ## Failed solutions
 
-That sounds horrible
+That sounds horrible, why would you put up with that?
+
+It's not that we didn't try...
 
 Note:
-   * There are lots of mitigations to these problems that tripwire has tried
    * VM templates
       * Too much disk, template sprawl
       * Difficult to accurately describe everything about the state
@@ -234,14 +229,15 @@ Note:
       * Poor sharable design
          * Often automation is designed to address a specific problem
          * Again, not composable
-      * NIH syndrome
+      * NIH syndrome - people problem
 
 --new-slide--
 
 ## Automate Development, test, and build environments with DevOps tools
 
 Note:
-   * Describe what is necessary to version an automated environment
+   * Propose that we can solve these problems by defining development, test, and build environments
+      using DevOps tools
    * Not going to prescribe specific tools, but I will tell you what we use
 
 --page-break--
@@ -334,12 +330,11 @@ Note:
      * Check out the code, create the development environment for the installer, profit.
   * New developers are productive on day 1!
      * Obviously they will probably customize these environments, but they don't have to
+  * Developers don't have to be intimately familiar with everything in the toolchain to be productive
 
 --page-break--
 
 ## Manual test environments
-
-![WOMB](http://cdn.meme.am/instances/62232400.jpg)
 
 Note:
    * **Why?**

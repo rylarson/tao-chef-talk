@@ -141,8 +141,7 @@ Note:
 ## Development environments
 
 Note:
-   * Developers take a long time to come onboard because they spend a lot of time setting up their environment
-      * Every development environment is a snowflake, which is fine
+   * Onboarding
       * Lots of common stuff though
          * Required libraries
          * Required software (java, build system, ruby, rvm, whatever)
@@ -167,50 +166,55 @@ Note:
    * Duplicated (or triplicated) work
       * Developers create environments to test their changes
       * QA creates more environments to test changes
+   * Wasted time for non bugs because of environmental variance (java version)
 
 --page-break--
 
-## Continuous integration test environments
+## Build and Continuous integration test environments
 
 ![WOMB](http://cdn.meme.am/instances/62232400.jpg)
 
    * Continuous integration environments are managed by a different team
    * Environmental problems make test automation less valuable
-   * Automated tests often depend on external resources that are manually created and maintained
+   * Some tests depend on external resources that are manually created and maintained
 
 Note:
-
    * Problems:
       * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
       * Developers have a hard time maintaining the automated tests since automation is often dependent
          on external resources that are expensive or impossible to replicate
-      * Often test changes can only really be tested in production
+      * Some tests ONLY run in continuous integration because they are too expensive to set up
+      * Envrionmental changes cause tests to fail on an old release
 
 --page-break--
 
-## Build environments - Reproducibility
+## Reproducibility
 
 ![Reproducibility](http://blog.f1000research.com/wordpress/wp-content/uploads/2014/04/reproducibility-small.jpg)
 
 Note:
-   * Problems:
-      * Many of the same problems as the Continuous Integration environments
-      * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
-   * The state of the build environments change over time.
+   * Environmental changes cause tests to pass on old releases
    * Builds are not truly reproducible because the environments used to develop, test, and build them
-      change over time.
+     change over time.
    * Scenario: Customer escalation for a product from 2 releases ago needs a hotfix. How do we have confidence
-      that nothing else changed besides our fix?
+      in a surgical fix
       * When the developer checks out the code, will it still build?
-      * Can we still stand up the automated tests for that release?
-         * Will they still pass?
+      * Will the automated tests in continuous integration still run?
+         * Do we still have the resources required for the tests to run?
       * Will the build agent still build it correctly?
+      * How much confidence do we really have in this "surgical" fix considering everything that has changed
 
 --page-break--
 
-## Reproducibility - Build agent horror story
+## Reproducibility - AIX horror story
 
    * Patch was pulled from release because an environmental change caused the AIX agent to recompile
+
+Notes:
+   * Nothing was changed about AIX
+   * Release was pulled from web
+   * Difficult to figure out what happened
+   * Difficult to figure out how to fix it
 
 ## Failed solutions
 
@@ -219,7 +223,7 @@ That sounds horrible, why would you put up with that?
 It's not that we didn't try...
 
 Note:
-   * VM templates
+VM templates
       * Too much disk, template sprawl
       * Difficult to accurately describe everything about the state
       * Not composable
@@ -229,6 +233,7 @@ Note:
       * Poor sharable design
          * Often automation is designed to address a specific problem
          * Again, not composable
+      * Too many technologies
       * NIH syndrome - people problem
 
 --new-slide--
@@ -238,7 +243,8 @@ Note:
 Note:
    * Propose that we can solve these problems by defining development, test, and build environments
       using DevOps tools
-   * Not going to prescribe specific tools, but I will tell you what we use
+   * Not going to prescribe specific tools, but I will tell you a little bit about the tools that we use and
+   how they fit into our workflows.
 
 --page-break--
 
@@ -246,15 +252,20 @@ Note:
 
 Chef is all about taking a system and applying some configuration to it.
 
+* More than anything, Chef provides a framework for environment automation.
+
 Note:
-   * The normal use case is to take a newly installed operating system and put it into the appropriate state
-   for development and test.
+   * When everybody is using the same framework, it makes things much easier to share
+   * Declarative model
    * Written in ruby
    * Package management built in (cookbooks)
       * Think Java Jar, Ruby Gem, Python Egg
    * Dependency management built in
    * Very similar to Rubygems/Bundler
    * Chef doesn't know or care that it is running on a VM
+   * Large community of open source cookbooks
+      * Easier to get buy in from the organization because you get a lot for free
+   * All code, all versioned
 
 --page-break--
 
@@ -265,7 +276,8 @@ once the VM is up.
 
 Note:
    * VMs compatible with Vagrant packaged as box files
-   * Be careful, box files can be very snowflakey too!
+   * Large community of people who make lots of different boxes available for free
+   * All code, all versioned
 
 --page-break--
 
@@ -277,18 +289,6 @@ Note:
    * It can do a lot more, but for the purposes of this talk, this is all that matters
    * Packer templates are just JSON files that describe what packer should do with the ISO
       * They are platform dependent (i.e. Kickstarter and Preseed files)
-
---page-break--
-
-## What about the failed solutions?
-
-Note:
-   * More than anything, Chef provides a framework for environment automation.
-   * Before we had problems because of the mix of language choice, other technologies, and design.
-   * When everybody is using the same framework, it makes things much easier to share
-   * Chef solves a lot of common problems for us too, like package and dependency management.
-   * There is great incentive for people not to roll their own since Chef gives us so many things for free
-      from the community site.
 
 --page-break--
 
@@ -315,7 +315,7 @@ Note:
 We can use DevOps tools to version our Development, Test, and Build environments by defining them as code!
 
 Note:
-   * Here is what our environments look like when they are defined as code
+   * Here is how we can address the problems with our environments using DevOps tools
 
 --page-break--
 
@@ -327,7 +327,6 @@ Note:
   * What about it going stale?
      * It has tests too that run with the build!
   * No longer afraid to work on installers!
-     * Check out the code, create the development environment for the installer, profit.
   * New developers are productive on day 1!
      * Obviously they will probably customize these environments, but they don't have to
   * Developers don't have to be intimately familiar with everything in the toolchain to be productive
@@ -337,20 +336,13 @@ Note:
 ## Manual test environments
 
 Note:
-   * **Why?**
    * Way less duplicated effort
-      * Every supported operating system that can be virtualized has a packer template to build it and a vagrant box
-         to consume
-      * Any operating system can be stood up in minutes
+      * Test environments can be stood up in minutes
    * No more spending hours troubleshooting problems due to variances in environments
       * Everybody has the same test environment!
-         * No more "works on my box"
-   * **How?**
-   * Chef code can be checked in with the source to install your app on any of the supported operating systems
-      * Development or QA can just type a command to get their app on whatever operating system they need to test on
-   * Again, this is all versioned along side the code it is designed to test
-   * What about it going stale?
-      * The person doing the manual tests will make noise if it breaks!
+   * When we define the test environments as code, everybody knows they are working in the same environment.
+   * Much easier for newer QA engineers to be productive, since they don't have to get tripped up on all of
+   the configuration gotchas.
 
 --page-break--
 
@@ -364,9 +356,8 @@ Note:
    * What about it going stale?
       * If the CI build fails because of an environmental problem, that is just treated as a test failure that will
          get fixed just like any other test failure
-   * This is all super great because any developer can check out the code, and build themselves the same environment
-      that the production continuous integration server is running in.
-      * Easier test development
+   * All tests can be run from a developer box because a script sets up the environment
+   * Easier test development
 
 --page-break--
 
@@ -386,6 +377,17 @@ Note:
       * Run the tests
    * Spin up the Production build environment
       * Do the build
+
+--page-break--
+
+## Resource conservation
+
+We get all this while using less resources!
+
+Note:
+   * Environments are expensive to stand up, so they are kept around
+   * Not shared very much though, everybody has their own
+   * When environments are cheap to create, they can go away
 
 --new-slide--
 

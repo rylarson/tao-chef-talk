@@ -42,10 +42,9 @@ Note:
 
 ![Wash, Rinse, Repeat](http://www.quickmeme.com/img/81/8100c2d1effc3a0dd54846705877bbe91e472c206f53b5414a4c3a50d12d45d2.jpg)
 
+Note:
    * Duplicated work
    * Environmental variance makes troubleshooting difficult
-
-Note:
    * I cannot begin to think how much time Tripwire has spent installing operating systems for testing
    * We are paying really smart engineers lots of money to install software, that is insane!
    * Wasted time for non bugs because of environmental variance (i.e. java version)

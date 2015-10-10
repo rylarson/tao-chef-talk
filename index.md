@@ -8,9 +8,11 @@ Software Engineer, Tripwire
 
 ## Environments
 
-   * Environmental problems
-   * Failed solutions
+   * Environmental problems at Tripwire
    * Solutions with DevOps tools
+
+Note:
+   * Tripwire problems are probably common
 
 --page-break--
 
@@ -20,6 +22,8 @@ Software Engineer, Tripwire
 
 Note:
    * Our environments are all snowflakes
+   * A lot of variance between environments
+   * Variances cause problems and difficult to see
 
 --page-break--
 
@@ -27,13 +31,9 @@ Note:
 
 Note:
    * Onboarding
-      * Lots of common stuff though
-         * Required libraries
-         * Required software (java, build system, ruby, rvm, whatever)
-         * Common gotchas that take thrashing with other developers to figure out
    * There is great value in having a reference development environment that works
-   * Setting up a development environment for working on weird stuff can be really costly
-      * Nobody wants to touch the installers because it is costly! So we work around it.
+   * Working on inactive projects - Installers
+   * Working around barriers - people problem
    * Setting up a development environment for working on something you aren't used to can be costly
 
 --page-break--
@@ -48,10 +48,7 @@ Note:
 Note:
    * I cannot begin to think how much time Tripwire has spent installing operating systems for testing
    * We are paying really smart engineers lots of money to install software, that is insane!
-   * Duplicated (or triplicated) work
-      * Developers create environments to test their changes
-      * QA creates more environments to test changes
-   * Wasted time for non bugs because of environmental variance (java version)
+   * Wasted time for non bugs because of environmental variance (i.e. java version)
 
 --page-break--
 
@@ -59,17 +56,15 @@ Note:
 
 ![WOMB](http://cdn.meme.am/instances/62232400.jpg)
 
-   * Continuous integration environments are managed by a different team
+   * Build & Continuous integration environments are managed by a different team
+   * Difficult to troubleshoot problems that only appear in these environments
    * Environmental problems make test automation less valuable
-   * Some tests depend on external resources that are manually created and maintained
 
 Note:
-   * Problems:
-      * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
-      * Developers have a hard time maintaining the automated tests since automation is often dependent
-         on external resources that are expensive or impossible to replicate
-      * Some tests ONLY run in continuous integration because they are too expensive to set up
-      * Envrionmental changes cause tests to fail on an old release
+   * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
+   * Developers have a hard time maintaining the automated tests since automation is often dependent
+      on external resources that are expensive or impossible to replicate
+   * Some tests ONLY run in continuous integration because they are too expensive to set up
 
 --page-break--
 
@@ -78,7 +73,6 @@ Note:
 ![Reproducibility](http://blog.f1000research.com/wordpress/wp-content/uploads/2014/04/reproducibility-small.jpg)
 
 Note:
-   * Environmental changes cause tests to pass on old releases
    * Builds are not truly reproducible because the environments used to develop, test, and build them
      change over time.
    * Scenario: Customer escalation for a product from 2 releases ago needs a hotfix. How do we have confidence
@@ -93,11 +87,15 @@ Note:
 
 ## Reproducibility - AIX horror story
 
+![AIX Horror](http://orig05.deviantart.net/07ee/f/2012/132/c/f/the_horror_you_gais_by_ask_salad_fingers-d4zj0jc.png)
+
    * Patch was pulled from release because an environmental change caused the AIX agent to recompile
 
 Notes:
-   * Nothing was changed about AIX
+   * Nothing was changed about AIX, so nobody thought we needed to test it
+   * This wasn't even a hotfix, we had more time but it still wasn't enough
    * Release was pulled from web
+   * Customer complaint alerted us to the problem
    * Difficult to figure out what happened
    * Difficult to figure out how to fix it
 
@@ -105,12 +103,12 @@ Notes:
 
 ## Failed solutions
 
-That sounds horrible, why would you put up with that?
-
-It's not that we didn't try...
+![Matrix](https://lh6.googleusercontent.com/tOWnfRO6MbdcHSimrpfsX69nFO4WLZW2o0aJ-fauqhGh-AGgeIyR0FZg3AzypAf_2rJh6KUmFFuePy2k2o8ek04633nV8MsNN0qNzAPGS3L5hRL_qA)
 
 Note:
-VM templates
+   * Documenting manual steps
+      * Goes stale
+   * VM templates
       * Too much disk, template sprawl
       * Difficult to accurately describe everything about the state
       * Not composable
@@ -137,6 +135,8 @@ Note:
 
 ## Configuration management - Chef
 
+![Chef](http://s3.amazonaws.com/opscode-corpsite/assets/121/pic-chef-logo.png)
+
 Chef is all about taking a system and applying some configuration to it.
 
 * More than anything, Chef provides a framework for environment automation.
@@ -158,6 +158,8 @@ Note:
 
 ## VM Deployment - Vagrant
 
+![Vagrant](https://www.pivotfreight.com/wp-content/uploads/2015/09/vagrant-logo_7acd1165e16d4120b62515fa57fe29be.jpg)
+
 Vagrant can deploy a VM to almost any VM provider, and optionally kick off a configuration management tool
 once the VM is up.
 
@@ -165,10 +167,13 @@ Note:
    * VMs compatible with Vagrant packaged as box files
    * Large community of people who make lots of different boxes available for free
    * All code, all versioned
+   * Distinctions between tools - feature creep
 
 --page-break--
 
 ## Vagrant box creation - Packer
+
+![Packer](https://d23f6h5jpj26xu.cloudfront.net/mitchellh_24702982422030_small.png)
 
 Packer is a tool that can take a bare ISO and make it suitable for use with Vagrant
 
@@ -181,17 +186,17 @@ Note:
 
 ## All together now
 
-   * Packer takes an ISO as input and outputs a Vagrant compatible box
-   * Vagrant takes the box as well as Chef cookbooks as input, and creates a VM from the box that has the configuration
-   specified by the Chef cookbooks
+![All together](images/all_together.png)
 
 Note:
-   * In practice
-      * Packer builds are done in Continuous Integration and the Vagrant Boxes are treated as artifacts just like any
+   * Packer takes an ISO as input and outputs a Vagrant compatible box
+      * Vagrant takes the box as well as Chef cookbooks as input, and creates a VM from the box that has the configuration
+      specified by the Chef cookbooks
+   * Packer builds are done in Continuous Integration and the Vagrant Boxes are treated as artifacts just like any
       other software
-      * Builds for Chef cookbooks are also done in continuous integration and the cookbooks are treated as artifacts
+   * Builds for Chef cookbooks are also done in continuous integration and the cookbooks are treated as artifacts
       just like any other software
-      * Vagrantfiles are checked in to source control and consume/put together the output from the Chef and Packer builds
+   * Vagrantfiles are checked in to source control and consume/put together the output from the Chef and Packer builds
 
 --new-slide--
 

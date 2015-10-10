@@ -276,6 +276,8 @@ Note:
 
 We get all this while using less resources!
 
+![Borat](images/borat.png)
+
 Note:
    * Environments are expensive to stand up, so they are kept around
    * Not shared very much though, everybody has their own

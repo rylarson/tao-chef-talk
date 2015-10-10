@@ -55,14 +55,10 @@ Note:
 
 ![WOMB](http://cdn.meme.am/instances/62232400.jpg)
 
+Note:
    * Build & Continuous integration environments are managed by a different team
    * Difficult to troubleshoot problems that only appear in these environments
    * Environmental problems make test automation less valuable
-
-Note:
-   * Difficult and expensive to troubleshoot problems that only appear on the build agents (not on dev boxes)
-   * Developers have a hard time maintaining the automated tests since automation is often dependent
-      on external resources that are expensive or impossible to replicate
    * Some tests ONLY run in continuous integration because they are too expensive to set up
 
 --page-break--

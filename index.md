@@ -86,7 +86,7 @@ Note:
 
    * Patch was pulled from release because an environmental change caused the AIX agent to recompile
 
-Notes:
+Note:
    * Nothing was changed about AIX, so nobody thought we needed to test it
    * This wasn't even a hotfix, we had more time but it still wasn't enough
    * Release was pulled from web
@@ -132,11 +132,9 @@ Note:
 
 ![Chef](http://s3.amazonaws.com/opscode-corpsite/assets/121/pic-chef-logo.png)
 
-Chef is all about taking a system and applying some configuration to it.
-
-* More than anything, Chef provides a framework for environment automation.
-
 Note:
+   * Chef is all about taking a system and applying some configuration to it.
+   * More than anything, Chef provides a framework for environment automation.
    * When everybody is using the same framework, it makes things much easier to share
    * Declarative model
    * Written in ruby

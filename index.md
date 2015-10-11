@@ -31,7 +31,6 @@ Note:
 
 Note:
    * Onboarding
-   * There is great value in having a reference development environment that works
    * Working on inactive projects - Installers
    * Working around barriers - people problem
    * Setting up a development environment for working on something you aren't used to can be costly

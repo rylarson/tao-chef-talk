@@ -277,12 +277,6 @@ Note:
 
 --new-slide--
 
-## Specialization is bad
-
-This should probably be at the end of the talk
-
---new-slide--
-
 Ryan Larson
 
 https://github.com/rylarson
